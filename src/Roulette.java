@@ -11,6 +11,7 @@ public class Roulette {
     private int round;
     private Scanner scan = new Scanner(System.in);
 
+
     public Roulette() {
         cash=200;
         round=0;
