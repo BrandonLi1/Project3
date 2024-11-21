@@ -8,7 +8,7 @@ public class MainLogic {
 
 
     public MainLogic () {
-        System.out.println("How much cash do you have?");
+        System.out.print("How much cash do you have? ");
         cash = scanner.nextInt();
     }
 
@@ -21,7 +21,7 @@ public class MainLogic {
             System.out.println("WELCOME TO THE CASINO GLOBE");
             boolean goodresponse = true;
             while (goodresponse == true) {
-                System.out.print("What game do you wish to play? 1) BlackJack 2) Roulette 3) Slots:");
+                System.out.println("What game do you wish to play? 1) BlackJack 2) Roulette 3) Slots");
                 int choice = scanner.nextInt();
                 if (choice == 1) {
                     BlackJackRunner();
@@ -46,7 +46,7 @@ public class MainLogic {
         scanner.nextLine();
         boolean goodresponse2 = true;
         while(goodresponse2 == true){
-            System.out.print("Do you wish to stay at the casino (yes /  no):");
+            System.out.print("Do you wish to stay at the casino (yes /  no): ");
             String Stay = scanner.nextLine();
             if(Stay.equals("yes")) {
                 playing =true;
@@ -86,14 +86,15 @@ public class MainLogic {
 
 
     public void BlackJackRunner(){
-        System.out.print("welcome to black jack how much do you want to bet :");
+        System.out.print("Welcome to BlackJack how much do you want to bet: ");
         int blackbet = scanner.nextInt();
         BlackJack blackjack = new BlackJack(cash, blackbet);
         BlackJack dealer = new BlackJack(cash);
         blackjack.BlackJackStart();
-        System.out.println("the dealer gives you your cards");
+        System.out.println("The dealer gives you your cards");
         System.out.println("The total value of your cards right now is " + blackjack.getHandValue());
-        System.out.println("Do you wish to hit or stay?: ");
+        System.out.print("Do you wish to hit or stay?: ");
+        scanner.nextLine();
         String hitstay = scanner.nextLine();
         Boolean decisions = true;
         dealer.BlackJackStart();
@@ -104,7 +105,7 @@ public class MainLogic {
         while (hitstay.equals("hit")) {
             blackjack.hit();
             if (blackjack.gameOver() == true) {
-                System.out.println("your new total value of your cards is" + blackjack.getHandValue());
+                System.out.println("your new total value of your cards is " + blackjack.getHandValue());
                 if (blackjack.getHandValue() == 21) {
                     System.out.println("you won congrats");
                     hitstay = "stay";
@@ -113,8 +114,8 @@ public class MainLogic {
                     hitstay = "stay";
                 }
             } else {
-                System.out.println("your new total value of your cards is" + blackjack.getHandValue());
-                System.out.println("Do you wish to hit or stay?: ");
+                System.out.println("your new total value of your cards is " + blackjack.getHandValue());
+                System.out.print("Do you wish to hit or stay?: ");
                 hitstay = scanner.nextLine();
             }
         }

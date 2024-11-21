@@ -6,6 +6,7 @@ public class BlackJack {
     private int currentCard=0;
     private int handValue=0;
     public int bid=0;
+    private int x=0;
 
     public BlackJack(int cash, int bid) {
         this.cash = cash;
@@ -36,8 +37,10 @@ public class BlackJack {
         for (int i = 0; i < 2; i++) {
             currentCard=(int)(Math.random()*cards.size()+1);//https://ioflood.com/blog/length-of-arraylist-java/#:~:text=The%20length%20of%20an%20ArrayList%20in%20Java%20can%20be%20found,elements%20present%20in%20the%20ArrayList.&text=In%20this%20example%2C%20we%20create,element%20'Hello'%20to%20it.
             checkHand();
-        }
             cards.remove(currentCard);
+            x= Integer.parseInt(cards.get(currentCard));
+        }
+
     }
 
     public int hit() {
@@ -58,25 +61,25 @@ public class BlackJack {
     }
 
     private void checkHand() {
-        if(cards.indexOf(currentCard)<=4) {
+        if (x<=4) {
             handValue+=1;
-        } else if (cards.indexOf(currentCard)<=8) {
+        } else if (x<=8) {
             handValue+=2;
-        }else if (cards.indexOf(currentCard)<=12) {
+        }else if (x<=12) {
             handValue+=3;
-        }else if (cards.indexOf(currentCard)<=16) {
+        }else if (x<=16) {
             handValue+=4;
-        }else if (cards.indexOf(currentCard)<=20) {
+        }else if (x<=20) {
             handValue+=5;
-        }else if (cards.indexOf(currentCard)<=24) {
+        }else if (x<=24) {
             handValue+=6;
-        }else if (cards.indexOf(currentCard)<=28) {
+        }else if (x<=28) {
             handValue+=7;
-        }else if (cards.indexOf(currentCard)<=32) {
+        }else if (x<=32) {
             handValue+=8;
-        }else if (cards.indexOf(currentCard)<=36) {
+        }else if (x<=36) {
             handValue+=9;
-        }else if (cards.indexOf(currentCard)<=52) {
+        }else if (x<=52) {
             handValue+=10;
         }
     }
