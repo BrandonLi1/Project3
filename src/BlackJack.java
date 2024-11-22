@@ -36,16 +36,18 @@ public class BlackJack {
     public void BlackJackStart() {
         for (int i = 0; i < 2; i++) {
             currentCard=(int)(Math.random()*cards.size()+1);//https://ioflood.com/blog/length-of-arraylist-java/#:~:text=The%20length%20of%20an%20ArrayList%20in%20Java%20can%20be%20found,elements%20present%20in%20the%20ArrayList.&text=In%20this%20example%2C%20we%20create,element%20'Hello'%20to%20it.
+            x= Integer.parseInt(cards.get(currentCard-1));
             checkHand();
             cards.remove(currentCard);
-            x= Integer.parseInt(cards.get(currentCard));
         }
 
     }
 
     public int hit() {
         currentCard=(int)(Math.random()*cards.size()+1);
+        x= Integer.parseInt(cards.get(currentCard-1));
         checkHand();
+        cards.remove(currentCard);
         return handValue;
     }
 

@@ -28,23 +28,29 @@ public class Roulette {
         cash-=white+red+black+green+blue;
         x= (int) (Math.random()*24);
         if (x<=11) {
+            System.out.println("You have rolled on white");
             cash=cash+(white*2);
-            System.out.println("You have doubled $" + white + "You now have $" + cash);
+            System.out.println("You have doubled $" + white + " You now have $" + cash);
         } else if (x<=17) {
+            System.out.println("You have rolled on red");
             cash=cash+(red*4);
-            System.out.println("You have quadrupled $" + red + "You now have $" + cash);
+            System.out.println("You have quadrupled$ " + red + " You now have $" + cash);
         } else if (x<=20) {
+            System.out.println("You have rolled on blue");
             cash=cash+(black*6);
-            System.out.println("You have sextupled $" + black + "You now have $" + cash);
+            System.out.println("You have sextupled $" + black + " You now have $" + cash);
         } else if (x<=22) {
+            System.out.println("You have rolled on green");
             cash=cash+(green*8);
-            System.out.println("You have octupled $" + green + "You now have $" + cash);
+            System.out.println("You have octupled $" + green + " You now have $" + cash);
         } else if (round%5==0 && x==23) {
+            System.out.println("You have rolled on blue");
             cash=cash+(blue*21);
-            System.out.println("Big Win! You have 21 times $" + blue + "You now have $" + cash);
+            System.out.println("Big Win! You have 21 $" + blue + " You now have $" + cash);
         } else {
+            System.out.println("You have rolled on white");
             cash=cash+(white*2);
-            System.out.println("You have doubled $" + white + "You now have $" + cash);
+            System.out.println("You have doubled $ " + white + " You now have $" + cash);
         }
     }
 

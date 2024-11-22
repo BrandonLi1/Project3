@@ -21,7 +21,7 @@ public class MainLogic {
             System.out.println("WELCOME TO THE CASINO GLOBE");
             boolean goodresponse = true;
             while (goodresponse == true) {
-                System.out.println("What game do you wish to play? 1) BlackJack 2) Roulette 3) Slots");
+                System.out.println("What game do you wish to play? 1) BlackJack 2) Roulette 3) Slots 4) Spinner Wheel");
                 int choice = scanner.nextInt();
                 if (choice == 1) {
                     BlackJackRunner();
@@ -32,7 +32,11 @@ public class MainLogic {
                 } else if (choice == 3) {
                     //methods to be added
                     goodresponse = false;
-                } else {
+                } else if (choice == 4) {
+                    SpinnerWheel();
+                    goodresponse=false;
+                }
+                else {
                     System.out.println("INVALID RESPONSE");
                     goodresponse = true;
                 }
@@ -43,7 +47,7 @@ public class MainLogic {
 
 
     public void end() {
-        scanner.nextLine();
+        System.out.println();
         boolean goodresponse2 = true;
         while(goodresponse2 == true){
             System.out.print("Do you wish to stay at the casino (yes /  no): ");
@@ -75,7 +79,7 @@ public class MainLogic {
                 } else {
                     playing = false;
                     goodresponse2 = false;
-                    System.out.println("Comeback to the Casino whenever you have money to spare");
+                    System.out.println("Come back to the Casino whenever you have money to spare");
                 }
             } else {
                 System.out.println("INVALID RESPONSE");
@@ -86,19 +90,20 @@ public class MainLogic {
 
 
     public void BlackJackRunner(){
-        System.out.print("Welcome to BlackJack how much do you want to bet: ");
+        System.out.print("Welcome to BlackJack, how much do you want to bet: ");
+        String playAgain = "";
         int blackbet = scanner.nextInt();
         BlackJack blackjack = new BlackJack(cash, blackbet);
         BlackJack dealer = new BlackJack(cash);
         blackjack.BlackJackStart();
         System.out.println("The dealer gives you your cards");
         System.out.println("The total value of your cards right now is " + blackjack.getHandValue());
-        System.out.print("Do you wish to hit or stay?: ");
+        System.out.print("Do you wish to hit or stay? ");
         scanner.nextLine();
         String hitstay = scanner.nextLine();
         Boolean decisions = true;
         dealer.BlackJackStart();
-        while(dealer.getHandValue() < 15) {
+        while(dealer.getHandValue() < 15 && blackjack.getHandValue()<21) {
             dealer.hit();
         }
         int dealerhand = dealer.getHandValue();
@@ -108,16 +113,101 @@ public class MainLogic {
                 System.out.println("your new total value of your cards is " + blackjack.getHandValue());
                 if (blackjack.getHandValue() == 21) {
                     System.out.println("you won congrats");
+                    this.cash += blackbet;
                     hitstay = "stay";
                 } else {
-                    System.out.println("your hand exceeded 21");
+                    System.out.println("your hand exceeded 21 and you lost your money");
+                    this.cash -= blackbet;
                     hitstay = "stay";
                 }
             } else {
                 System.out.println("your new total value of your cards is " + blackjack.getHandValue());
-                System.out.print("Do you wish to hit or stay?: ");
+                System.out.print("Do you wish to hit or stay? ");
                 hitstay = scanner.nextLine();
             }
         }
+        System.out.println("Your hand value right now is " + blackjack.getHandValue());
+        System.out.println("The dealers hand is " + dealer.getHandValue());
+        if (dealer.getHandValue() > 0 && dealer.getHandValue() <= 21) {
+            if(dealer.getHandValue() > blackjack.getHandValue() || blackjack.getHandValue()>21){
+                System.out.println("you lose");
+                this.cash -= blackbet;
+            } else if(dealer.getHandValue() < blackjack.getHandValue()){
+                System.out.println("you win");
+                this.cash += blackbet;
+            } else {
+                System.out.println("It is a tie");
+            }
+        } else {
+            if(dealer.getHandValue() > 21 && blackjack.getHandValue() > 21 ){
+                System.out.println("The dealer also exceeded 21 but since you did first you lost");
+                this.cash -= blackbet;
+            } else {
+                System.out.println("you win");
+                this.cash+=blackbet;
+            }
+        }
+        System.out.println("Your current balance is now $" + this.cash);
+        System.out.print("Do you want to play again?(y/n) ");
+        playAgain=scanner.nextLine();
+        if (playAgain.equals("y")) {
+            BlackJackRunner();
+        } else {
+            end();
+        }
+    }
+
+
+    public void SpinnerWheel() {
+        Roulette spinner = new Roulette(this.cash);
+        int white=0;
+        int red=0;
+        int black=0;
+        int green=0;
+        int blue=0;
+        String x="";
+        System.out.print("How much money do you want to bet on white(2x)? ");
+        white=scanner.nextInt();
+        System.out.print("How much money do you want to bet on red(4x)? ");
+        red=scanner.nextInt();
+        System.out.print("How much money do you want to bet on black(6x)? ");
+        black=scanner.nextInt();
+        System.out.print("How much money do you want to bet on green(8x)? ");
+        green=scanner.nextInt();
+        System.out.print("How much money do you want to bet on blue(21x)? ");
+        blue=scanner.nextInt();
+        spinner.spin(white, red, black, green, blue);
+
+        x="y";
+        while (x.equals("y")) {
+            System.out.print("Do you want to spin again?(y/n) ");
+            scanner.nextLine();
+            x=scanner.nextLine();
+            if (x.equals("y")) {
+                System.out.print("Do you want to change your bets?(y/n) ");
+                x=scanner.nextLine();
+                if(x.equals("y")) {
+                    System.out.print("How much money do you want to bet on white(2x)? ");
+                    white=scanner.nextInt();
+                    System.out.print("How much money do you want to bet on red(4x)? ");
+                    red=scanner.nextInt();
+                    System.out.print("How much money do you want to bet on black(6x)? ");
+                    black=scanner.nextInt();
+                    System.out.print("How much money do you want to bet on green(8x)? ");
+                    green=scanner.nextInt();
+                    System.out.print("How much money do you want to bet on blue(21x)? ");
+                    blue=scanner.nextInt();
+                }
+                spinner.spin(white, red, black, green, blue);
+            }
+        }
+        end();
+    }
+
+
+    public void SlotsRunner(){
+        System.out.print("Welcome to Slots, how much do you want to bet: ");
+        int slotbet = scanner.nextInt();
+        Slots slots = new Slots(this.cash);
     }
 }
