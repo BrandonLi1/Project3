@@ -47,7 +47,7 @@ public class BlackJack {
         currentCard=(int)(Math.random()*cards.size()+1);
         x= Integer.parseInt(cards.get(currentCard-1));
         checkHand();
-        cards.remove(currentCard);
+        cards.remove(""+ currentCard);
         return handValue;
     }
 

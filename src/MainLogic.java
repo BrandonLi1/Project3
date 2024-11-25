@@ -113,11 +113,9 @@ public class MainLogic {
                 System.out.println("your new total value of your cards is " + blackjack.getHandValue());
                 if (blackjack.getHandValue() == 21) {
                     System.out.println("you won congrats");
-                    this.cash += blackbet;
                     hitstay = "stay";
                 } else {
                     System.out.println("your hand exceeded 21 and you lost your money");
-                    this.cash -= blackbet;
                     hitstay = "stay";
                 }
             } else {
