@@ -7,7 +7,19 @@ public class Slots {
 
     public Slots (int cash) {
         this.cash = cash;
-        rounds=1;
+        rounds=0;
+    }
+
+    public int getColumn1() {
+        return column1;
+    }
+
+    public int getColumn2() {
+        return column2;
+    }
+
+    public int getColumn3() {
+        return column3;
     }
 
     public Slots () {
@@ -19,11 +31,12 @@ public class Slots {
         column1 = (int) (Math.random() * 10 + 1);
         column2 = (int) (Math.random() * 10 + 1);
         column3 = (int) (Math.random() * 10 + 1);
+        rounds++;
     }
 
 
 
-    private void image(int column) {
+    public void image(int column) {
         if (column==1) {
             System.out.println("                                                                                        \n" +
                     "                                                      ██                                \n" +
@@ -184,7 +197,7 @@ public class Slots {
                     "                                                                                        \n" +
                     "                                                                                        ");
         }
-        else if (column==8 && rounds%2==0) {
+        else if (column==8) {
             System.out.println(
                     "⠀⠀⠀⠀⠀⠀⠀⣀⠤⠄⠀⠠⠐⠒⠈⠑⠒⠤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                             "⠀⠀⠀⠀⠀⢠⠊⠀⠀⠀⠀⠀⢂⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -203,7 +216,7 @@ public class Slots {
                             "⠀⠀⠀⠧⢄⡘⠀⠀⠀⠀⠈⠑⠂⠐⠒⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
 
         }
-        else if (column==9 && rounds%3==1) {
+        else if (column==9) {
             System.out.println("                                                                                        \n" +
                     "░░      ░░      ░░  ░░░░      ░░  ░░░░    ░░░░      ░░  ░░░░    ░░░░      ░░      ░░  ░░\n" +
                     "                                                                                        \n" +
@@ -271,8 +284,9 @@ public class Slots {
         }
     }
 
-    private void checkWin () {
+    public void checkWin () {
         if (column1==column2 && column1==column3) {
+            System.out.println("You win");
             if (column1==1) {
                 cash+=5;
             }
@@ -304,6 +318,8 @@ public class Slots {
             } else {
                 cash+=10;
             }
+        } else {
+            System.out.println("You lose");
         }
     }
 }

@@ -30,7 +30,7 @@ public class MainLogic {
                     //methods to be added
                     goodresponse = false;
                 } else if (choice == 3) {
-                    //methods to be added
+                    SlotsRunner();
                     goodresponse = false;
                 } else if (choice == 4) {
                     SpinnerWheel();
@@ -204,8 +204,29 @@ public class MainLogic {
 
 
     public void SlotsRunner(){
-        System.out.print("Welcome to Slots, how much do you want to bet: ");
-        int slotbet = scanner.nextInt();
+        System.out.println("Welcome to Slots");
         Slots slots = new Slots(this.cash);
+        System.out.println("Do you want to spin?(y/n) ");
+        scanner.nextLine();
+        String x = scanner.nextLine();
+        while (x.equals("y")) {
+            System.out.println("spinning now");
+            System.out.println();
+            slots.spin();
+            this.cash-=10;
+            System.out.println("------row 1------");
+            slots.image(slots.getColumn1());
+            System.out.println("------row 2------");
+            slots.image(slots.getColumn2());
+            System.out.println("------row 3------");
+            slots.image(slots.getColumn3());
+            System.out.println();
+            slots.checkWin();
+            System.out.println("You now have $" + this.cash);
+            System.out.println("Do you want to spin again?(y/n) ");
+            x=scanner.nextLine();
+        }
+        System.out.println("Come back soon!");
+        end();
     }
 }
