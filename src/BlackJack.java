@@ -28,7 +28,7 @@ public class BlackJack {
     public int getCash() {
         return cash;
     }
-
+    
     public int getHandValue() {
         return handValue;
     }
@@ -85,5 +85,5 @@ public class BlackJack {
             handValue+=10;
         }
     }
+    
 }
-
