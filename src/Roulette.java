@@ -7,22 +7,25 @@ public class Roulette {
     private int black;
     private int green;
     private int blue;
-    private boolean end;
     private int round;
     private Scanner scan = new Scanner(System.in);
 
 
-    public Roulette() {
+    public Roulette() { //spinner
         cash=200;
         round=0;
     }
 
-    public Roulette(int cash) {
+    public int getCash() {
+        return cash;
+    }
+
+    public Roulette(int cash) { //spinner
         this.cash=cash;
         round=0;
     }
 
-    public void spin(int white, int red, int black, int green, int blue) {
+    public void spin(int white, int red, int black, int green, int blue) { //spinner
         int x=0;
         round++;
         cash-=white+red+black+green+blue;
@@ -54,32 +57,40 @@ public class Roulette {
         }
     }
 
-    public boolean end() {
-        System.out.println("Do you want to cash out?(y/n");
-        String x = scan.nextLine();
-        if (cash<=0 && x.equals("y")) {
-            System.out.println("Go earn money in Black Jack");
-            return end=true;
-        }
-        if (x.equals("y") && cash>0) {
-            System.out.println("are you sure?(99% of gamblers quit before they hit big)");
-            x=scan.nextLine();
+    public void normalRoulette (int bet, String color, String EvenOrOdd) {
+        String num = normalRoulette();
+        String col="";
+        this.cash-=bet;
+        if (normalRoulette(0)==2) {
+            col="red";
         } else {
-            System.out.println("Let's play another round");
-            return end = false;
+            col="black";
         }
-        if (x.equals("y")) {
-            System.out.println("wrong choice, you can't leave and now you're in debt");
-            cash=-100;
-            System.out.println("You now have $" + cash);
-            return end = false;
-        } else  {
-            System.out.println("That's the right choice");
-            return end = false;
-        }
-    }
-
-    public String normalRoulette() {
+        System.out.println("It has rolled " + num + " and " + col);
+        
+        if (color.equals("") || EvenOrOdd.equals("")) {
+            if (color.equals(col)) {
+                bet*=2;
+                this.cash+=bet;
+                System.out.println("You have won! You now have $" + this.cash );
+                return;
+            }
+            if (EvenOrOdd.equals(num)) {
+                bet*=2;
+                this.cash+=bet;
+                System.out.println("You have won! You now have $" + this.cash );
+                return;
+            }
+        } else if (color.equals(col) && EvenOrOdd.equals(num)) {
+            bet*=4;
+            this.cash+=cash;
+            System.out.println("You have won big! You now have $" + this.cash );
+            return;
+        } 
+        System.out.println("You have lost $" + bet + " You now have $" + this.cash);
+    }   
+    
+    private String normalRoulette() {
         int x=0;
         x=(int)(Math.random()*36+1);
         if (x%2==0) {
@@ -89,17 +100,12 @@ public class Roulette {
         }
     }
 
-    public int normalRouletteSpin () {
-        int x=0;
+    private int normalRoulette (int x) {
         x=(int)(Math.random()*36+1);
         if (x<=18) {
             return 1;
         } else {
             return 2;
         }
-    }
-
-    public void normalRoulette (int cash, String color, String EvenOrOdd) {
-
     }
 }
