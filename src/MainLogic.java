@@ -17,8 +17,8 @@ public class MainLogic {
         String RED = "\u001B[31m"; //https://www.tutorialspoint.com/how-to-print-colored-text-in-java-console
         String RESET = "\u001B[0m";
         while (playing == true) {
-            System.out.println(RED + "DISCLAIMER WE DO NOT CONDONE CHILD GAMBLING" + RESET);
-            System.out.println("WELCOME TO THE CASINO GLOBE");
+            System.out.print(RED + "DISCLAIMER WE DO NOT CONDONE CHILD GAMBLING" + RESET + "\n");
+            System.out.println("WELCOME TO THE MILLIONAIRE ISLAND!!!");
             boolean goodresponse = true;
             while (goodresponse == true) {
                 System.out.println("What game do you wish to play? 1) BlackJack 2) Roulette 3) Slots 4) Spinner Wheel");
@@ -27,7 +27,7 @@ public class MainLogic {
                     BlackJackRunner();
                     goodresponse = false;
                 } else if (choice == 2) {
-                    //methods to be added
+                    RouletteRunner();
                     goodresponse = false;
                 } else if (choice == 3) {
                     SlotsRunner();
@@ -46,7 +46,7 @@ public class MainLogic {
     }
 
 
-    public void end() {
+    private void end() {
         System.out.println();
         boolean goodresponse2 = true;
         while(goodresponse2 == true){
@@ -151,6 +151,7 @@ public class MainLogic {
         if (playAgain.equals("y")) {
             BlackJackRunner();
         } else {
+            this.cash=blackjack.getCash();
             end();
         }
     }
@@ -199,6 +200,7 @@ public class MainLogic {
                 spinner.spin(white, red, black, green, blue);
             }
         }
+        this.cash=spinner.getCash();
         end();
     }
 
@@ -226,6 +228,35 @@ public class MainLogic {
             System.out.println("Do you want to spin again?(y/n) ");
             x=scanner.nextLine();
         }
+        this.cash=slots.getCash();
+        System.out.println("Come back soon!");
+        end();
+    }
+    public void RouletteRunner(){ //for the betting on color/even/odd set blank/doesn't want to bet on as ""
+        System.out.println("Welcome to Roulette");
+        scanner.nextLine();
+        System.out.println("Do you wish to bet on this game (y/n)");
+        String betgame = scanner.nextLine();
+        Roulette roulette = new Roulette(this.cash);
+        while(betgame.equals("y")) {
+            System.out.println("How much do you want to bet: ");
+            int roulettebet=scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("What color do you wish to bet on (red / black / none): ");
+            String colorBet = scanner.nextLine();
+            if (!colorBet.equals("red") && !colorBet.equals("black")) {
+                colorBet="";
+            }
+            System.out.print("Do you wish to bet on even or odd (even / odd / none): ");
+            String evenBet = scanner.nextLine();
+            if (!evenBet.equals("odd") && !evenBet.equals("even")) {
+                evenBet="";
+            }
+            roulette.normalRoulette(roulettebet, colorBet,evenBet );
+            System.out.println("Do you wish to roll again (y/n): ");
+            betgame = scanner.nextLine();
+        }
+        this.cash=roulette.getCash();
         System.out.println("Come back soon!");
         end();
     }
