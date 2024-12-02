@@ -21,6 +21,10 @@ public class Slots {
     public int getColumn3() {
         return column3;
     }
+    
+    public int getCash() {
+        return cash;
+    }
 
     public Slots () {
         cash=200;
