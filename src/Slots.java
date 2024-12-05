@@ -120,7 +120,7 @@ public class Slots {
                             "⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀");
 
         }
-        else if (column==5) {
+        else if (column==5) { // the exit parts are to print the color for the squares
             System.out.println(
                     "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜\n" +
                             "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜\n" +
@@ -289,7 +289,7 @@ public class Slots {
     }
 
     public void checkWin () {
-        if (column1==column2 && column1==column3) {
+        if (column1==column2 && column1==column3) { //checks if column1 is equal to column 2 and 3
             System.out.println("You win");
             if (column1==1) {
                 cash+=5;

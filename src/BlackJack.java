@@ -13,14 +13,14 @@ public class BlackJack {
         if (bid>=cash) {
             this.bid=bid;
         }
-        for (int i = 1; i <= 52; i++) {
+        for (int i = 1; i <= 52; i++) { //creates a list 1 to 52
             cards.add(String.valueOf(i)); //https://www.w3schools.com/java/java_arraylist.asp
         }
     }
 
     public BlackJack(int cash) {
         this.cash=cash;
-        for (int i = 1; i <= 52; i++) {
+        for (int i = 1; i <= 52; i++) { //creates a list 1 to 52
             cards.add(String.valueOf(i));
         }
     }
@@ -33,21 +33,21 @@ public class BlackJack {
         return handValue;
     }
 
-    public void BlackJackStart() {
-        for (int i = 0; i < 2; i++) {
-            currentCard=(int)(Math.random()*cards.size()+1);//https://ioflood.com/blog/length-of-arraylist-java/#:~:text=The%20length%20of%20an%20ArrayList%20in%20Java%20can%20be%20found,elements%20present%20in%20the%20ArrayList.&text=In%20this%20example%2C%20we%20create,element%20'Hello'%20to%20it.
-            x= Integer.parseInt(cards.get(currentCard-1));
-            checkHand();
-            cards.remove(currentCard);
+    public void BlackJackStart() { //initializes hand
+        for (int i = 0; i < 2; i++) { //currentCard is a random number within the size of the list, cards.size() grabs length of list
+            currentCard=(int)(Math.random()*cards.size());//https://ioflood.com/blog/length-of-arraylist-java/#:~:text=The%20length%20of%20an%20ArrayList%20in%20Java%20can%20be%20found,elements%20present%20in%20the%20ArrayList.&text=In%20this%20example%2C%20we%20create,element%20'Hello'%20to%20it.
+            x= Integer.parseInt(cards.get(currentCard)); //grabs the value of the item at index of list
+            checkHand(); //adds to hand value
+            cards.remove(currentCard); //removes the item at the index of list
         }
 
     }
 
     public int hit() {
-        currentCard=(int)(Math.random()*cards.size()+1);
-        x= Integer.parseInt(cards.get(currentCard-1));
-        checkHand();
-        cards.remove(""+ currentCard);
+        currentCard=(int)(Math.random()*cards.size()); //currentCard is a random number within the size of the list, cards.size() grabs length of list
+        x= Integer.parseInt(cards.get(currentCard)); //grabs the value of the item at index of list
+        checkHand(); //adds to hand value
+        cards.remove(currentCard); //removes the item at the index of list
         return handValue;
     }
 
@@ -85,5 +85,4 @@ public class BlackJack {
             handValue+=10;
         }
     }
-    
 }

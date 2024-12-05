@@ -20,16 +20,17 @@ public class Roulette {
         return cash;
     }
 
-    public Roulette(int cash) { //spinner
+    public Roulette(int cash) { //constructor
         this.cash=cash;
         round=0;
     }
 
+    //for wheel spinner
     public void spin(int white, int red, int black, int green, int blue) { //spinner
         int x=0;
         round++;
         cash-=white+red+black+green+blue;
-        x= (int) (Math.random()*24);
+        x= (int) (Math.random()*24); //randomizes value 0-23 and depending on value, it doubles the bet
         if (x<=11) {
             System.out.println("You have rolled on white");
             cash=cash+(white*2);
@@ -57,11 +58,12 @@ public class Roulette {
         }
     }
 
+    //roulette, different from spinner
     public void normalRoulette (int bet, String color, String EvenOrOdd) {
-        String num = normalRoulette();
+        String num = normalRoulette(); //randomizes to "even" or "odd"
         String col="";
         this.cash-=bet;
-        if (normalRoulette(0)==2) {
+        if (normalRoulette(0)==2) { //randomizes 50/50 chances
             col="red";
         } else {
             col="black";
