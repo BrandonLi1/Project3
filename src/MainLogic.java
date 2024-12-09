@@ -175,31 +175,31 @@ public class MainLogic {
         white=scanner.nextInt();
         while (white<0) {
             System.out.print("Invalid bet. bet again: ");
-            blackbet=scanner.nextInt();
+            white=scanner.nextInt();
         }
         System.out.print("How much money do you want to bet on red(4x)? ");
         red=scanner.nextInt();
         while (red<0) {
             System.out.print("Invalid bet. bet again: ");
-            blackbet=scanner.nextInt();
+            red=scanner.nextInt();
         }
         System.out.print("How much money do you want to bet on black(6x)? ");
         black=scanner.nextInt();
         while (black<0) {
             System.out.print("Invalid bet. bet again: ");
-            blackbet=scanner.nextInt();
+            black=scanner.nextInt();
         }
         System.out.print("How much money do you want to bet on green(8x)? ");
         green=scanner.nextInt();
         while (green<0) {
             System.out.print("Invalid bet. bet again: ");
-            blackbet=scanner.nextInt();
+            green=scanner.nextInt();
         }
         System.out.print("How much money do you want to bet on blue(21x)? ");
         blue=scanner.nextInt();
         while (blue<0) {
             System.out.print("Invalid bet. bet again: ");
-            blackbet=scanner.nextInt();
+            blue=scanner.nextInt();
         }
         spinner.spin(white, red, black, green, blue);
 
@@ -216,38 +216,38 @@ public class MainLogic {
                     white=scanner.nextInt();
                     while (white<0) {
                         System.out.print("Invalid bet. bet again: ");
-                        blackbet=scanner.nextInt();
+                        white=scanner.nextInt();
                     }
                     System.out.print("How much money do you want to bet on red(4x)? ");
                     red=scanner.nextInt();
                     while (red<0) {
                         System.out.print("Invalid bet. bet again: ");
-                        blackbet=scanner.nextInt();
+                        red=scanner.nextInt();
                     }
                     System.out.print("How much money do you want to bet on black(6x)? ");
                     black=scanner.nextInt();
                     while (black<0) {
                         System.out.print("Invalid bet. bet again: ");
-                        blackbet=scanner.nextInt();
+                        black=scanner.nextInt();
                     }
                     System.out.print("How much money do you want to bet on green(8x)? ");
                     green=scanner.nextInt();
                     while (green<0) {
                         System.out.print("Invalid bet. bet again: ");
-                        blackbet=scanner.nextInt();
+                        green=scanner.nextInt();
                     }
                     System.out.print("How much money do you want to bet on blue(21x)? ");
                     blue=scanner.nextInt();
                     while (blue<0) {
                         System.out.print("Invalid bet. bet again: ");
-                        blackbet=scanner.nextInt();
-                    }
+                        blue=scanner.nextInt();
                 }
                 spinner.spin(white, red, black, green, blue);
             }
         }
         this.cash=spinner.getCash();
         end();
+        }
     }
 
 
@@ -291,7 +291,7 @@ public class MainLogic {
             int roulettebet=scanner.nextInt();
             while (roulettebet<0) {
                 System.out.print("Invalid bet. bet again: ");
-                blackbet=scanner.nextInt();
+                roulettebet=scanner.nextInt();
             }
             scanner.nextLine();
             System.out.print("What color do you wish to bet on (red / black / none): ");
