@@ -58,7 +58,7 @@ public class MainLogic {
                 start();
             } else if(Stay.equals("no")){
                 int addiction = (int)((Math.random()* 10) + 1);
-                if (addiction == 1 || addiction == 2 || addiction == 3) {
+                if (addiction == 1 || addiction == 2 || addiction == 3 || cash<0) {
                     playing = true;
                     goodresponse2 = false;
                     System.out.println("do you know 90% of gamblers quit before they hit the jackpot???? \n ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
