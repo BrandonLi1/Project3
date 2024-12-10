@@ -57,7 +57,7 @@ public class MainLogic {
                 goodresponse2 = false;
                 start();
             } else if(Stay.equals("no")){
-                int addiction = (int)((Math.random()* 10) + 1);
+                int addiction = (int)((Math.random()* 4) + 1);
                 if (addiction == 1 || addiction == 2 || addiction == 3 || cash<0) {
                     playing = true;
                     goodresponse2 = false;
