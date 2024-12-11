@@ -157,7 +157,6 @@ public class MainLogic {
         if (playAgain.equals("y")) {
             BlackJackRunner();
         } else {
-            this.cash=blackjack.getCash();
             end();
         }
     }
